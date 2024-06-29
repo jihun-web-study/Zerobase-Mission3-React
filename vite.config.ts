@@ -30,6 +30,7 @@ export default defineConfig(({ command, mode }) => {
           ws: true,
         },
       },
+      port: 3000,
     },
   };
 });
