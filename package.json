@@ -28,6 +28,7 @@
     "vite": "^4.3.9"
   },
   "dependencies": {
-    "@vercel/node": "^2.15.10"
+    "@vercel/node": "^2.15.10",
+    "vite-plugin-svgr": "^4.2.0"
   }
 }

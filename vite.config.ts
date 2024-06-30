@@ -1,10 +1,18 @@
 // https://vitejs.dev/config/
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
+import svgr from "vite-plugin-svgr";
 
 export default defineConfig(({ command, mode }) => {
   const base = {
-    plugins: [react()],
+    plugins: [svgr(), react()],
+    resolve: {
+      alias: [
+        { find: "@", replacement: "/src" },
+        { find: "@assets", replacement: "/src/assets" },
+        { find: "@store", replacement: "/src/store" },
+      ],
+    },
   };
 
   /**
