@@ -12,7 +12,7 @@ const App = (): JSX.Element => {
       <section className="drawer-content">
         {/* Nav를 렌더링 하세요 */}
         <Nav />
-        <section className="main pt-16">
+        <section className="main pt-16 min-h-[calc(100vh-4rem-224px)]">
           <Router />
         </section>
         {/* Footer를 렌더링 하세요 */}
