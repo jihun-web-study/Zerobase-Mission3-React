@@ -8,6 +8,7 @@ export default defineConfig(({ command, mode }) => {
     plugins: [svgr(), react()],
     resolve: {
       alias: [
+        { find: "@public", replacement: "/public" },
         { find: "@", replacement: "/src" },
         { find: "@assets", replacement: "/src/assets" },
         { find: "@store", replacement: "/src/store" },
