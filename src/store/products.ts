@@ -1,5 +1,6 @@
 import { selector } from "recoil";
 import CONSTANTS from "../constants/constants";
+import { Category } from "@/constants/category";
 
 // 혹시 API통신이 되지 않는다면 /product.json파일을 활용해서 로드하세요.
 // const productsURL = '/products.json';
@@ -50,15 +51,14 @@ export const filteredProductsList = selector<ProductGroup>({
 
     const groupedProducts = products.reduce<ProductGroup>(
       (group, product) => {
-        switch (product.category) {
-          case "men's clothing":
-          case "women's clothing":
+        switch (Category[product.category]) {
+          case "패션":
             group.fashion.push(product);
             break;
-          case "jewelery":
+          case "액세서리":
             group.accessory.push(product);
             break;
-          case "electronics":
+          case "디지털":
             group.digital.push(product);
             break;
         }
