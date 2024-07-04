@@ -1,20 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { IProduct } from "@/store/products";
 
-interface ItemProps {
-  item: {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
-    rating: {
-      rate: number;
-      count: number;
-    };
-  };
-}
+type ItemProps = { item: IProduct };
 
 const Item = ({ item }: ItemProps) => {
   return (
