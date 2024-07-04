@@ -36,3 +36,41 @@ export const productsList = selector<IProduct[]>({
     }
   },
 });
+
+interface ProductGroup {
+  fashion: IProduct[];
+  accessory: IProduct[];
+  digital: IProduct[];
+}
+
+export const filteredproductsList = selector<ProductGroup>({
+  key: "filteredproductsList",
+  get: ({ get }) => {
+    const products = get(productsList);
+
+    const groupedProducts = products.reduce<ProductGroup>(
+      (group, product) => {
+        switch (product.category) {
+          case "men's clothing":
+          case "women's clothing":
+            group.fashion.push(product);
+            break;
+          case "jewelery":
+            group.accessory.push(product);
+            break;
+          case "electronics":
+            group.digital.push(product);
+            break;
+        }
+        return group;
+      },
+      { fashion: [], accessory: [], digital: [] }
+    );
+
+    return {
+      fashion: groupedProducts.fashion.slice(0, 4),
+      accessory: groupedProducts.accessory.slice(0, 4),
+      digital: groupedProducts.digital.slice(0, 4),
+    };
+  },
+});
