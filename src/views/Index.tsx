@@ -2,12 +2,12 @@ import { Suspense, lazy } from "react";
 import Slider from "../components/common/Slider";
 import ProductsLoad from "@/components/products/ProductsLoad";
 import { useRecoilValue } from "recoil";
-import { filteredproductsList } from "@/store/products";
+import { mainProductsList } from "@/store/products";
 
 const ItemList = lazy(() => import("@/components/common/ItemList"));
 
 const Index = (): JSX.Element => {
-  const representProducts = useRecoilValue(filteredproductsList);
+  const representProducts = useRecoilValue(mainProductsList);
   console.log("representProducts: ", representProducts);
 
   return (

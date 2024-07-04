@@ -43,8 +43,8 @@ interface ProductGroup {
   digital: IProduct[];
 }
 
-export const filteredproductsList = selector<ProductGroup>({
-  key: "filteredproductsList",
+export const filteredProductsList = selector<ProductGroup>({
+  key: "filteredProductsList",
   get: ({ get }) => {
     const products = get(productsList);
 
@@ -66,6 +66,15 @@ export const filteredproductsList = selector<ProductGroup>({
       },
       { fashion: [], accessory: [], digital: [] }
     );
+
+    return groupedProducts;
+  },
+});
+
+export const mainProductsList = selector<ProductGroup>({
+  key: "mainProductsList",
+  get: ({ get }) => {
+    const groupedProducts = get(filteredProductsList);
 
     return {
       fashion: groupedProducts.fashion.slice(0, 4),

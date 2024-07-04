@@ -5,7 +5,7 @@ import ProductsLoad from "@/components/products/ProductsLoad";
 import { MENUS } from "../constants/category";
 
 import { useRecoilValue } from "recoil";
-import { productsList, filteredproductsList } from "@/store/products";
+import { filteredProductsList } from "@/store/products";
 
 /**
  * 뷰페이지에는 특별한 로직이 포함되어서는 안됩니다.
@@ -15,7 +15,7 @@ const Digital = (): JSX.Element => {
   /**
    * 해당 부분에 함수나 기타 로직등을 작성하지마세요.
    */
-  const products = useRecoilValue(productsList).filter((v) => v.category === "electronics");
+  const products = useRecoilValue(filteredProductsList).digital;
   console.log("accessory: ", products);
 
   return (
