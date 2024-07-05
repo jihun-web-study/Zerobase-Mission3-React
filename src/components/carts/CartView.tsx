@@ -2,10 +2,14 @@ import { Link } from "react-router-dom";
 import BreadCrumb from "../common/Breadcrumb";
 import Confirm from "../common/Confirm";
 import CartList from "@/components/carts/CartList";
-import { toCurrencyFormat } from "@/helpers/helpers";
+import { toCurrencyFormat, isObjectEmpty } from "@/helpers/helpers";
+import { useRecoilValue } from "recoil";
+import { cartState, cartTotal, ICartState } from "@/store/cart";
 
 const CartView = (): JSX.Element => {
-  const hasCart = true;
+  const cart = useRecoilValue<ICartState>(cartState);
+  const isCartEmpty = isObjectEmpty(cart);
+  const totalPrice = useRecoilValue(cartTotal);
 
   const CartListNone = () => {
     return (
@@ -19,11 +23,9 @@ const CartView = (): JSX.Element => {
   };
 
   const Purchase = () => {
-    const tempPrice = 0;
-
     return (
       <div className="self-start shrink-0 flex items-center mt-10 mb-20">
-        <span className="text-xl md:text-2xl">{`총 : ${toCurrencyFormat(tempPrice)}`}</span>
+        <span className="text-xl md:text-2xl">{`총 : ${toCurrencyFormat(totalPrice)}`}</span>
         <label htmlFor="confirm-modal" className="modal-button btn btn-primary ml-5">
           구매하기
         </label>
@@ -36,14 +38,13 @@ const CartView = (): JSX.Element => {
       <BreadCrumb category="홈" crumb="장바구니" />
       <div className="mt-6 md:mt-14 px-2 lg:px-0">
         {/* 구매하기 버튼 등 화면을 구성 해보세요. */}
-        <>
-          {/* 물품이 없다면? */}
-          {!hasCart && <CartListNone />}
-        </>
+        {/* 물품이 없다면? */}
+        {isCartEmpty && <CartListNone />}
+
         <div className="lg:flex justify-between mb-20">
           <div>
             {/* 물품이 있다면? */}
-            {hasCart && <CartList />}
+            {!isCartEmpty && <CartList />}
           </div>
           <Purchase />
         </div>
