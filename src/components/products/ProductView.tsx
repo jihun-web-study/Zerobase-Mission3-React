@@ -2,6 +2,7 @@ import React from "react";
 import Rating from "@/components/common/Rating";
 import { IProduct } from "@/store/products";
 import { Link } from "react-router-dom";
+import { toCurrencyFormat } from "@/helpers/helpers";
 
 interface ProductViewProps {
   product: IProduct;
@@ -29,7 +30,7 @@ const ProductView = ({ product }: ProductViewProps) => {
   };
 
   const CardPrice = () => {
-    return <p className="mt-2 mb-4 text-3xl">${Math.floor(product.price)}</p>;
+    return <p className="mt-2 mb-4 text-3xl">${toCurrencyFormat(product.price)}</p>;
   };
 
   const CardActions = () => {

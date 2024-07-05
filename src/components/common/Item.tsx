@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { IProduct } from "@/store/products";
+import { toCurrencyFormat } from "@/helpers/helpers";
 
 type ItemProps = { item: IProduct };
 
@@ -19,7 +20,7 @@ const Item = ({ item }: ItemProps) => {
       </figure>
       <div className="card-body bg-gray-100 dark:bg-gray-700">
         <p className="card-title text-base">{item.title}</p>
-        <p className="text-base">{Math.floor(item.price)}</p>
+        <p className="text-base">{toCurrencyFormat(item.price)}</p>
       </div>
     </Link>
   );
