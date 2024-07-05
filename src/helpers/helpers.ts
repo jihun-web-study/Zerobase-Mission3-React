@@ -9,3 +9,5 @@ const currencyFormat = new Intl.NumberFormat("en-US", {
 });
 
 export const toCurrencyFormat = (value: number) => currencyFormat.format(value);
+
+export const isObjectEmpty = (value: Object) => Object.keys(value).length === 0;
