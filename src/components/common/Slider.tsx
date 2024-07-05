@@ -49,7 +49,7 @@ const Slider = () => {
       {items.map((item: ISliderItem, index: number) => {
         return (
           <div key={item.name} className="carousel-slide max-h-[700px]">
-            <div className="carousel-description absolute left-auto right-auto bottom-1/3 mb-10 text-left w-full lg:container px-4 md:px-10">
+            <div className="z-10 carousel-description absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 right-auto bottom-1/3 mb-10 text-left w-full lg:container px-4 md:px-10 ">
               <h2 className="text-2xl lg:text-4xl font-bold text-white">{item.title}</h2>
               <p className="my-2 text-white">{item.text}</p>
               <Link to={`/${item.name}`} className="btn btn-sm lg:btn-md mt-3">
@@ -68,7 +68,7 @@ const Slider = () => {
                 </svg>
               </Link>
             </div>
-            <img src={item.img} alt={item.name} />
+            <img src={item.img} alt={item.name} className="brightness-75" />
           </div>
         );
       })}
