@@ -9,6 +9,8 @@
 
 - [배포 주소](https://jh-react-shop.vercel.app/)
 
+- [깃허브 주소](https://github.com/JIHU96/Zerobase-Mission3-React-deploy)
+
 ## 디렉토리 구조
 
 - 여러분의 디렉토리 구조를 도식화 해보세요. 아래는 예시입니다.
