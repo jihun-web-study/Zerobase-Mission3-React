@@ -16,7 +16,6 @@ const Digital = (): JSX.Element => {
    * 해당 부분에 함수나 기타 로직등을 작성하지마세요.
    */
   const products = useRecoilValue(filteredProductsList).digital;
-  console.log("accessory: ", products);
 
   return (
     <section className="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto">

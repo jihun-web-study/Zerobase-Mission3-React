@@ -7,7 +7,6 @@ import ProductList from "@/components/products/ProductList";
 //import ProductsLoad from "@/components/products/ProductsLoad";
 const Index = (): JSX.Element => {
   const { state, contents: representProducts } = useRecoilValueLoadable(mainProductsList);
-  console.log("representProducts: ", state, representProducts);
 
   // Suspnese가 동작(스켈레톤 UI)안함 + useRecoildValue의 동기적 실행으로 인해 마운트전 렌더링 에러 발생
   // => useRecoilValueLoadable의 state로 분기함

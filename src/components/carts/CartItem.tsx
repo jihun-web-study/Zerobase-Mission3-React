@@ -8,12 +8,10 @@ const CartItem = ({ item }: { item: ICartItems }) => {
 
   // store/cart.ts를 참고하세요.
   const onClickMinus = () => {
-    console.log("minus");
     setCart(removeFromCart(cart, item.id));
   };
 
   const onClickPlus = () => {
-    console.log("plus");
     const newCart = addToCart(cart, item.id);
     setCart(newCart);
   };

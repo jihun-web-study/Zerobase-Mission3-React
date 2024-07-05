@@ -12,8 +12,6 @@ const Product = () => {
   const productID = params.id;
   const product = useRecoilValue(productsList).filter((v) => v.id === Number(productID))[0];
 
-  console.log(product);
-
   return (
     <section className="pt-4 lg:pt-5 pb-4 lg:pb-8 px-4 xl:px-2 xl:container mx-auto">
       <Suspense fallback={<ProductViewLoad />}>

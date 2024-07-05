@@ -38,7 +38,6 @@ const ProductView = ({ product }: { product: IProduct }) => {
         <button
           className="btn btn-primary"
           onClick={() => {
-            console.log("장바구니 담기 클릭");
             const newCart = addToCart(cart, String(product.id));
             setCart(newCart);
           }}
