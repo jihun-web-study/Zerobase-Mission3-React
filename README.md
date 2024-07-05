@@ -3,7 +3,11 @@
 - 여러분이 직접 개인 프로젝트를 구성하듯 만드셔도 괜찮습니다.
 - 클론코딩을 한다면, 코드에 대한 회고들을 남기고 구현한 기능들의 내용들을 이해하시면서 경험하는 내용들을 작성 해보세요.
 
-[노지훈의 회고록](https://github.com/jihun-web-study/Zerobase-Mission3-React/blob/main/%ED%9A%8C%EA%B3%A0%EB%A1%9D.md)
+## 개인 회고록과 배포 주소
+
+- [노지훈의 회고록](https://github.com/jihun-web-study/Zerobase-Mission3-React/blob/main/%ED%9A%8C%EA%B3%A0%EB%A1%9D.md)
+
+- [배포 주소](https://jh-react-shop.vercel.app/)
 
 ## 디렉토리 구조
 
