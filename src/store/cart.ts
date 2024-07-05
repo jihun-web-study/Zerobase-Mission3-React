@@ -1,5 +1,6 @@
 import { atom, selector } from "recoil";
 import { CART_ITEM } from "../constants/category";
+import { productsList } from "./products";
 
 export interface ICartInfo {
   readonly id: number;
@@ -33,16 +34,60 @@ export const cartState = atom<ICartState>({
   ],
 });
 
+// 카트에 담긴 총 개수
+export const cartCount = selector<number>({
+  key: "cartCount",
+  get: ({ get }) => {
+    const cartItems = get(cartState);
+    return Object.keys(cartItems).reduce((acc: number, index: string) => {
+      return acc + cartItems[index].count || 0;
+    }, 0);
+  },
+});
+
+// 카트에 담긴 총 가격
+export const cartTotal = selector<number>({
+  key: "cartTotal",
+  get: ({ get }) => {
+    const products = get(productsList);
+    const cartItems = get(cartState);
+    return Object.keys(cartItems).reduce((acc: number, id: string) => {
+      return acc + cartItems[id].count * products[parseInt(id) - 1].price || 0;
+    }, 0);
+  },
+});
 /**
  * cartList를 구현 하세요.
  * id, image, count 등을 return합니다.
  */
-export const cartList = atom<ICartState>({
+export const cartList = selector<ICartItems[]>({
   key: "cartList",
-  default: {},
+  get: ({ get }) => {
+    const products = get(productsList);
+    const cartItems = get(cartState);
+    return Object.keys(cartItems).map((id) => {
+      const items = cartItems[id];
+      return {
+        id: items.id,
+        image: products[items.id - 1].image,
+        title: products[items.id - 1].title,
+        count: items.count,
+        price: products[items.id - 1].price,
+      };
+    });
+  },
 });
 
 // addToCart는 구현 해보세요.
+export const addToCart = (cart: ICartState, id: string) => {
+  if (!cartState[id]) {
+    cartState[id] = { id, count: 1 };
+    return { ...cart, [id]: { id, count: 1 } };
+  }
+
+  cartState[id].count++;
+  return { ...cart, [id]: { id: id, count: cartState[id].count } };
+};
 
 // removeFromCart는 참고 하세요.
 export const removeFromCart = (cart: ICartState, id: string) => {
